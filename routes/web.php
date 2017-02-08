@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+	return view('welcome');
+})->name('home');
+/* Route example */
+Route::get('{n}', function($n) {
+	return 'Route testing, var = '.$n;
+})->where('n', '[1-3]');

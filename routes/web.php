@@ -11,18 +11,22 @@
 |
 */
 
-/* Example with var */
-Route::get('{n}', function($n) {
-	return 'Route testing, var = '.$n;
-})->where('n', '[1-3]');
-/* Example of response with header */
-Route::get('header', function () {
-	return response('Response with header', 206)->header('Content-Type', 'text/plain');
-});
+/* ROUTES EXAMPLES */
 
-Route::get('/', function () {
-	return view('welcome');
-})->name('home');
-Route::get('article/{n}', function($n) {
-	return view('article/article')->with('numero', $n);
-})->where('n', '[0-2]+');
+// Example with var
+/*Route::get('{n}', function($n) {
+	return 'Route testing, var = '.$n;
+})->where('n', '[1-3]');*/
+// Example of response with header
+/*Route::get('header', function () {
+	return response('Response with header', 206)->header('Content-Type', 'text/plain');
+});*/
+// Old home route
+/*Route::get('/', function () {
+	return view('home');
+})->name('home');*/
+
+// Home (with controller)
+Route::get('/', 'HomeController@index')->name('home');
+// Articles
+Route::get('article/{n}', 'ArticleController@show')->where('n', '[0-2]+');
